@@ -88,7 +88,7 @@ $numrows = $row[0];
                                                     </div>
                                                     <div class="flex-grow-1 ms-3">
                                                     <?php
-$result = mysqli_query($con,"SELECT count(*) FROM portfolio");
+$result = mysqli_query($con,"SELECT count(*) FROM products");
 $rowx = mysqli_fetch_row($result);
 $nux = $rowx[0];
 

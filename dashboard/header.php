@@ -23,9 +23,7 @@ if (!isset($_SESSION['username'])) {
     <meta content="Panel de administración de Men's Style" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- Favicon de la aplicación -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
-    <!-- CSS de jsvectormap -->
-    <link href="assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="../assets/img/favicon/favicon.ico">
     <!-- CSS del deslizador Swiper -->
     <link href="assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
     <!-- Configuración de diseño JS -->

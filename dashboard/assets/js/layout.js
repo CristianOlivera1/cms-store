@@ -1,1 +1,40 @@
-!function(){"use strict";var t,a,e;sessionStorage.getItem("defaultAttribute")&&(t=document.documentElement.attributes,a={},Object.entries(t).forEach(function(t){var e;t[1]&&t[1].nodeName&&"undefined"!=t[1].nodeName&&(e=t[1].nodeName,a[e]=t[1].nodeValue)}),sessionStorage.getItem("defaultAttribute")!==JSON.stringify(a)?(sessionStorage.clear(),window.location.reload()):((e={})["data-layout"]=sessionStorage.getItem("data-layout"),e["data-sidebar-size"]=sessionStorage.getItem("data-sidebar-size"),e["data-layout-mode"]=sessionStorage.getItem("data-layout-mode"),e["data-layout-width"]=sessionStorage.getItem("data-layout-width"),e["data-sidebar"]=sessionStorage.getItem("data-sidebar"),e["data-sidebar-image"]=sessionStorage.getItem("data-sidebar-image"),e["data-layout-direction"]=sessionStorage.getItem("data-layout-direction"),e["data-layout-position"]=sessionStorage.getItem("data-layout-position"),e["data-layout-style"]=sessionStorage.getItem("data-layout-style"),e["data-topbar"]=sessionStorage.getItem("data-topbar"),Object.keys(e).forEach(function(t){e[t]&&e[t]&&document.documentElement.setAttribute(t,e[t])})))}();
+(function() {
+    "use strict";
+    var attributes, storedAttributes;
+
+    if (sessionStorage.getItem("defaultAttribute")) {
+        attributes = document.documentElement.attributes;
+        storedAttributes = {};
+
+        Object.entries(attributes).forEach(function(attribute) {
+            var name;
+            if (attribute[1] && attribute[1].nodeName && attribute[1].nodeName !== "undefined") {
+                name = attribute[1].nodeName;
+                storedAttributes[name] = attribute[1].nodeValue;
+            }
+        });
+
+        if (sessionStorage.getItem("defaultAttribute") !== JSON.stringify(storedAttributes)) {
+            sessionStorage.clear();
+            window.location.reload();
+        } else {
+            var settings = {};
+            settings["data-layout"] = sessionStorage.getItem("data-layout");
+            settings["data-sidebar-size"] = sessionStorage.getItem("data-sidebar-size");
+            settings["data-layout-mode"] = sessionStorage.getItem("data-layout-mode");
+            settings["data-layout-width"] = sessionStorage.getItem("data-layout-width");
+            settings["data-sidebar"] = sessionStorage.getItem("data-sidebar");
+            settings["data-sidebar-image"] = sessionStorage.getItem("data-sidebar-image");
+            settings["data-layout-direction"] = sessionStorage.getItem("data-layout-direction");
+            settings["data-layout-position"] = sessionStorage.getItem("data-layout-position");
+            settings["data-layout-style"] = sessionStorage.getItem("data-layout-style");
+            settings["data-topbar"] = sessionStorage.getItem("data-topbar");
+
+            Object.keys(settings).forEach(function(key) {
+                if (settings[key]) {
+                    document.documentElement.setAttribute(key, settings[key]);
+                }
+            });
+        }
+    }
+})();

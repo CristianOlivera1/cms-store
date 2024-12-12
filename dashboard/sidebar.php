@@ -62,10 +62,10 @@ $username=$_SESSION['username'];
                             <div class="menu-dropdown collapse" id="sidebarPot" style="">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="add-portfolio.php" class="nav-link" data-key="t-one-page"> Añadir Nuevo </a>
+                                        <a href="add-product.php" class="nav-link" data-key="t-one-page"> Añadir Nuevo </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="portfolio.php" class="nav-link" data-key="t-nft-landing"> Lista de Portafolio </a>
+                                        <a href="productlist.php" class="nav-link" data-key="t-nft-landing"> Lista de Productos </a>
                                     </li>
                                 </ul>
                             </div>

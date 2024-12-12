@@ -88,7 +88,7 @@ print "
     <h3 class='my-3'>$serviceg</h3>
     <p>$service_desc</p>
     <img src='dashboard/uploads/services/$img' alt='img' class='category-img'>
-    <a class='service-btn mt-3' href='products.php?id=$id'>Ver modelos</a>
+    <a class='service-btn mt-3' href='product.php?id=$id'>Ver modelos</a>
 </div>
 </div>
 ";
@@ -119,53 +119,6 @@ print "
             </div>
             </div>
         </div>
- <!-- Elementos del Portafolio -->
-        <div class="row items portfolio-items">
-
-        <?php
-                   $q="SELECT * FROM  portfolio ORDER BY id DESC LIMIT 6";
-
-
- $r123 = mysqli_query($con,$q);
-
-while($ro = mysqli_fetch_array($r123))
-{
-
-    $id="$ro[id]";
-    $port_title="$ro[port_title]";
-    $port_desc="$ro[port_desc]";
-    $ufile="$ro[ufile]";
-
-print "
-<div class='col-12 col-sm-6 col-lg-4 portfolio-item' data-groups='['marketing','development']'>
-<!-- Estudios de Caso Individuales -->
-<div class='single-case-studies'>
-    <!-- Imagen de Estudios de Caso -->
-    <a href='portdetail.php?id=$id'>
-    <img src='dashboard/uploads/portfolio/$ufile' alt=''>
-    </a>
-    <!-- Superposición de Estudios de Caso -->
-    <a href='portdetail.php?id=$id' class='case-studies-overlay'>
-    <!-- Texto de Superposición -->
-    <span class='overlay-text text-center p-3'>
-        <h3 class='text-white mb-3'>$port_title</h3>
-        <p class='text-white'>$port_desc.</p>
-    </span>
-    </a>
-</div>
-</div>
-";
-}
-?>
-
-        </div>
-        <div class="row justify-content-center">
-            <a href="portfolio" class="btn btn-bordered mt-4">Ver Más</a>
-        </div>
-        </div>
-    </section>
-    <!-- ***** Área de Portafolio Fin ***** -->
-
     <!-- ***** Área de Plan de Precios Inicio ***** -->
 
     <!-- ***** Área de Plan de Precios Fin ***** -->

@@ -12,11 +12,11 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                <h4 class="mb-sm-0">Add Testimony</h4>
+                                <h4 class="mb-sm-0">Add Service</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Testimony</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Service</a></li>
                                         <li class="breadcrumb-item active">Add</li>
                                     </ol>
                                 </div>
@@ -36,7 +36,7 @@
                                     <ul class="nav nav-tabs-custom rounded card-header-tabs border-bottom-0" role="tablist">
                                         <li class="nav-item">
                                             <a class="nav-link active" data-bs-toggle="tab" href="#personalDetails" role="tab" aria-selected="false">
-                                                <i class="fas fa-home"></i> New Testimony
+                                                <i class="fas fa-home"></i> Add Service
                                             </a>
                                         </li>
 
@@ -50,24 +50,24 @@
            $status = "OK"; //initial status
 $msg="";
            if(ISSET($_POST['save'])){
-$namex = mysqli_real_escape_string($con,$_POST['name']);
-$message = mysqli_real_escape_string($con,$_POST['message']);
-$position = mysqli_real_escape_string($con,$_POST['position']);
+$service_title = mysqli_real_escape_string($con,$_POST['service_title']);
+$service_desc = mysqli_real_escape_string($con,$_POST['service_desc']);
+$service_detail = mysqli_real_escape_string($con,$_POST['service_detail']);
 
- if ( strlen($namex) < 1 ){
-$msg=$msg."Name must contain a Character.<BR>";
+ if ( strlen($service_title) < 5 ){
+$msg=$msg."Service Title Must Be More Than 5 Char Length.<BR>";
 $status= "NOTOK";}
- if ( strlen($position) < 1 ){
-$msg=$msg."Position must contain a Character.<BR>";
+ if ( strlen($service_desc) > 150 ){
+$msg=$msg."Short description Must Be Less Than 150 Char Length.<BR>";
 $status= "NOTOK";}
 
-if ( strlen($message) < 10 ){
-  $msg=$msg."Testimony Message Must Be More Than 10 Char Length.<BR>";
+if ( strlen($service_detail) < 15 ){
+  $msg=$msg."Service Detail Must Be More Than 15 Char Length.<BR>";
   $status= "NOTOK";}
 
 
 
-$uploads_dir = 'uploads/testimony';
+$uploads_dir = 'uploads/services';
 
         $tmp_name = $_FILES["ufile"]["tmp_name"];
         // basename() may prevent filesystem traversal attacks;
@@ -80,28 +80,18 @@ $uploads_dir = 'uploads/testimony';
 
 if($status=="OK")
 {
-$qf=mysqli_query($con,"INSERT INTO testimony (name, message, position,ufile) VALUES ('$namex', '$message', '$position', '$new_file_name')");
+$qb=mysqli_query($con,"INSERT INTO service (service_title, service_desc, service_detail,ufile) VALUES ('$service_title', '$service_desc', '$service_detail', '$new_file_name')");
 
 
-
-
-		if($qf){
+		if($qb){
 		    	$errormsg= "
 <div class='alert alert-success alert-dismissible alert-outline fade show'>
-                 Testimony has been added successfully.
+                  Service has been added successfully.
                   <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                   </div>
  "; //printing error if found in validation
 
 		}
-        else{
-            $errormsg= "
-            <div class='alert alert-danger alert-dismissible alert-outline fade show'>
-                       Some Technical Glitch Is There. Please Try Again Later Or Ask Admin For Help.
-                       <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                       </div>"; //printing error if found in validation
-
-        }
 	}
 
         elseif ($status!=="OK") {
@@ -136,37 +126,41 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
    ?>
               <form action="" method="post" enctype="multipart/form-data">
                                                 <div class="row">
-                                              <div class="col-lg-6">
+
+
+
+   <div class="col-lg-6">
                                                         <div class="mb-3">
-                                                            <label for="firstnameInput" class="form-label"> Client's Name</label>
-                                                            <input type="text" class="form-control"  name="name" placeholder="Enter Clients Name">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="firstnameInput" class="form-label">Position</label>
-                                                            <input type="text" class="form-control"  name="position" placeholder="Enter Client's Position">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="firstnameInput" class="form-label">Testimony</label>
-                                                            <textarea class="form-control"  name="message" rows="2"></textarea>
+                                                            <label for="firstnameInput" class="form-label"> Service Title</label>
+                                                            <input type="text" class="form-control" id="firstnameInput" name="service_title" placeholder="Enter Service Title">
                                                         </div>
                                                     </div>
 
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label for="firstnameInput" class="form-label"> Short Description</label>
+                                                            <textarea class="form-control" id="exampleFormControlTextarea5" name="service_desc" rows="2"></textarea>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label for="firstnameInput" class="form-label"> Service Detail</label>
+                                                            <textarea class="form-control" id="exampleFormControlTextarea5" name="service_detail" rows="3"></textarea>
+                                                        </div>
+                                                    </div>
 
 
                                                     <div class="col-lg-6">
                                                         <div class="mb-3">
                                                             <label for="firstnameInput" class="form-label">Photo</label>
-                                                            <input type="file" class="form-control" name="ufile" >
+                                                            <input type="file" class="form-control" id="firstnameInput" name="ufile" >
                                                         </div>
                                                     </div>
                                                     <!--end col-->
                                                     <div class="col-lg-12">
                                                         <div class="hstack gap-2 justify-content-end">
-                                                            <button type="submit" name="save" class="btn btn-primary">Add Testimony</button>
+                                                            <button type="submit" name="save" class="btn btn-primary">Add Service</button>
 
                                                         </div>
                                                     </div>

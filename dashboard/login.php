@@ -81,7 +81,7 @@ $errormsg= "
   <meta content="Administración y Panel de Control Multipropósito" name="description" />
   <meta content="EAPIIS" name="author" />
   <!-- Favicon de la aplicación -->
-  <link rel="shortcut icon" href="assets/images/favicon.ico">
+  <link rel="shortcut icon" href="../assets/img/favicon/favicon.ico">
 
   <!-- Configuración de diseño Js -->
   <script src="assets/js/layout.js"></script>

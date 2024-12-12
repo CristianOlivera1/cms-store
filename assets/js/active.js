@@ -191,31 +191,6 @@
         }
     });
 
-    // :: 14.0 PORTFOLIO ACTIVE CODE
-    $('.portfolio-area').each(function(index) {
-
-        var count = index + 1;
-
-        $(this).find('.portfolio-items').removeClass('portfolio-items').addClass('portfolio-items-'+count);
-        $(this).find('.portfolio-item').removeClass('portfolio-item').addClass('portfolio-item-'+count);
-        $(this).find('.portfolio-btn').removeClass('portfolio-btn').addClass('portfolio-btn-'+count);
-        
-        var Shuffle = window.Shuffle;
-        var Filter  = new Shuffle(document.querySelector('.portfolio-items-'+count), {
-            itemSelector: '.portfolio-item-'+count,
-            buffer: 1,
-        })
-    
-        $('.portfolio-btn-'+count).on('change', function (e) {
-    
-            var input = e.currentTarget;
-            
-            if (input.checked) {
-                Filter.filter(input.value);
-            }
-        })
-    });
-
     // :: 15.0 CONTACT FORM ACTIVE CODE
     // Get the form.
     var form = $('#contact-form');
